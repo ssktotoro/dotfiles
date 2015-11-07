@@ -1,6 +1,6 @@
 # -------------------------- Command Prompt ---------------------------------- #
 
-# Now we will setup a more useful command prompt ($PS1). 
+# Now we will setup a more useful command prompt ($PS1).
 # Most of this information was found at
 # the Arch Linux wiki: https://wiki.archlinux.org/index.php/Color_Bash_Prompt.
 
@@ -80,5 +80,5 @@ On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
 # Set-up command prompt
-PS1="\[\e[${Blue}\]\u@omega:\[$Blue\][\W] \[$Blue\]>\[\e[0m\] "
+PS1="\[\e[${Blue}\]\u@\h:\[$Blue\][\W] \[$Blue\]>\[\e[0m\] "
 export PS1

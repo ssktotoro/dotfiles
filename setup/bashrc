@@ -1,2 +1,0 @@
-export SETUPDIR=$HOME/omega_setup
-source $SETUPDIR/bashrc.sh
