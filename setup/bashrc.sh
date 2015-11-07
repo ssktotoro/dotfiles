@@ -5,17 +5,19 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# User specific aliases and funcitons
- #. /home/hep/share/.hep_bash_profile
-
-# -------------------------- Aliases ---------------------------------------- #
+# aliases
 if [ -f $SETUPDIR/aliases.sh ]; then
     source $SETUPDIR/aliases.sh
 fi
 
-# -------------------------- Command Prompt ---------------------------------- #
+# command prompt
 if [ -f $SETUPDIR/prompt.sh ]; then
     source $SETUPDIR/prompt.sh
+fi
+
+# git completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
 fi
 
 # set the appropriate ls color coding on unix
