@@ -1,0 +1,16 @@
+[user]
+name = Joshua Loyal
+email = joshua.d.loyal@gmail.com
+[alias]
+co = checkout
+ec = config --global -e
+new = checkout -b
+up = !git pull --rebase --prune $@
+ca = commit -am
+save = !git add -A && git commit -m 'SAVEPOINT'
+wip = commit -am "WIP"
+undo = reset HEAD~1 --mixed
+redo = checkout --
+wipe = checkout -f
+bclean = "!f() { git branch --merged ${1-master} | grep -v "${1-master}$" | xargs -r git branch -d; }; f"
+bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
