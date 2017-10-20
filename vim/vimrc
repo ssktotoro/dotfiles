@@ -1,23 +1,60 @@
 set nocompatible " stops vim from emulating the bugs inherent in vi.
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead
+" of Plugin)
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 set scrolloff=2
-colorscheme desert
-set bg=dark
+colorscheme solarized
+set background=dark
 set history=1000
 set title
+set encoding=utf-8
 
 " These two commands help format C-like source code.
 set autoindent
 set smartindent
 
 set showmatch
+set visualbell
+set t_vb=
 
-set vb t_vb=
-
-" This shows what your are typing as a command.
 set showcmd
 
+" Python indentation and autocompletion
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'davidhalter/jedi-vim'
+let g:pymode_rope = 0
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+set clipboard=unnamed
+
+let python_highlight_all=1
+syntax on
+
+let g:ycm_autoclose_preview_window_after_completion=1
+
+
 " Needed for Syntax Highlighting and stuff
-filetype on 
+filetype on
 filetype plugin on
 syntax enable
 
@@ -25,7 +62,7 @@ syntax enable
 " in a single file. Set your grep program to always generate a file name.
 set grepprg=grep\ -nH\ $*
 
-set nohls " I find it annoying that the search highlights everything it finds. This turns this off (turn it back on with :set hls).
+set nohls " I find it annoying that the search highlights everything it finds. This turns this off turn it back on with :set hls
 
 " Useful to enforce 79 column formatting recommend for python
 "set colorcolumn=80
@@ -37,11 +74,21 @@ set smarttab
 
 " Who wants an 8 character tab?
 set shiftwidth=4
+set textwidth=79
+set fileformat=unix
 set softtabstop=4
 
 " Cool tab completion stuff
 set wildmenu
 set wildmode=list:longest
+
+
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 "Line Numbers
 set number
@@ -52,8 +99,9 @@ set ignorecase
 "Smart Case
 set smartcase
 
-" remap jj to escape in insert mode. 
+" remap jj to escape in insert mode.
 inoremap jj <Esc>
+inoremap nn <C-n>
 
 nnoremap JJJJ <Nop>
 
@@ -68,7 +116,7 @@ nnoremap ; :
 nnoremap : ;
 
 "Set up backup and temporary file directories
-set backup 
+set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 
@@ -85,7 +133,7 @@ map <left>  :bp<cr>
 let g:tex_flavor='latex'
 
 " automatically save and load folders
-au BufWinLeave * mkview 
+au BufWinLeave * mkview
 au BufWinEnter * silent loadview
 
 " Matlab highlighting
@@ -94,7 +142,7 @@ source $VIMRUNTIME/macros/matchit.vim
 " mouse configuration
 " set mouse=nicr
 
-" NB : Staring with Vim 7, the filetype of emtpy .tex files defaults to 
+" NB : Staring with Vim 7, the filetype of emtpy .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
@@ -102,9 +150,14 @@ let g:tex_flavor='latex'
 " To install solarized move solarized.vim to the vim/colors directory
 "let g:solarized_termcolors = 16
 "let g:solarized_visibility = "high"
-"let g:solarized_contrast = "high"
-se t_Co=16
-colorscheme solarized
+"let g:solarized_contrast = "low"
 
 " Remove all trailing white space on save
 autocmd BufWritePre * :%s/\s\+$//e
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+
+
+highlight Comment cterm=bold
+
