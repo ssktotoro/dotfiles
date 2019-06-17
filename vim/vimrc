@@ -13,6 +13,16 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead
 " of Plugin)
+" Python indentation and autocompletion
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'davidhalter/jedi-vim'
+let g:pymode_rope = 0
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'christoomey/vim-tmux-navigator'
 
 
 " All of your Plugins must be added before the following line
@@ -36,15 +46,6 @@ set t_vb=
 
 set showcmd
 
-" Python indentation and autocompletion
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
-let g:pymode_rope = 0
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 set clipboard=unnamed
 
 let python_highlight_all=1
