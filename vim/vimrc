@@ -22,6 +22,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 
 
@@ -122,7 +123,7 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 
 " Automatically cd into the directory that the file is in
-autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+set autochdir
 
 " Change some stuff for moving around buffers
 map <right> :bn<cr>
@@ -134,8 +135,8 @@ map <left>  :bp<cr>
 let g:tex_flavor='latex'
 
 " automatically save and load folders
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
 
 " Matlab highlighting
 source $VIMRUNTIME/macros/matchit.vim
@@ -149,9 +150,9 @@ source $VIMRUNTIME/macros/matchit.vim
 let g:tex_flavor='latex'
 
 " To install solarized move solarized.vim to the vim/colors directory
-"let g:solarized_termcolors = 16
+"let g:solarized_termcolors = 256
 "let g:solarized_visibility = "high"
-"let g:solarized_contrast = "low"
+"let g:solarized_contrast = "normal"
 
 " Remove all trailing white space on save
 autocmd BufWritePre * :%s/\s\+$//e
